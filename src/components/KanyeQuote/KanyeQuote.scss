@@ -1,3 +1,128 @@
-div {
-    color: red;
+// div {
+//     color: red;
+// }
+.tweet {
+	display: flex;
+	flex-direction: column;
+	margin: 8px;
+	// height: 70%;
+	align-items: center;
+	justify-content: center;
+
+    &__like {
+		-webkit-animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1)
+			both;
+		animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+		cursor: pointer;
+	}
+}
+
+.tweet__container {
+	-webkit-animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+	animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+	background-color: rgb(245, 248, 250);
+	margin: 3px;
+	border: 1px solid #ebebeb;
+	border-radius: 6px;
+	font-weight: 400;
+	font-size: 1rem;
+	padding: 15px;
+	flex: auto 1;
+	flex-direction: column;
+	display: flex;
+	width: 300px;
+}
+
+.tweet__text {
+	height: 180px;
+	display: flex;
+	align-items: center;
+}
+
+.user {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+
+	&__img {
+		height: 46px;
+		width: 46px;
+		border-radius: 100px;
+		background-image: url(https://pbs.twimg.com/profile_images/1276461929934942210/cqNhNk6v_400x400.jpg);
+		background-position: center;
+		background-size: cover;
+	}
+	&__username {
+		margin-left: 10px;
+		margin-right: auto;
+		p {
+			font-weight: 600;
+			margin: 0;
+            display: flex;
+		}
+		span {
+			color: #6d758d;
+		}
+	}
+}
+
+.button__new {
+    transition: all 0.6s ease-in-out;
+	margin-top: 10px;
+	color: #fff;
+	background-color: rgb(29, 161, 242);
+	cursor: pointer;
+	box-shadow: 1px 0px 20px 14px rgb(0 0 0 / 6%);
+	border: 1px solid #f7f7f7;
+	padding: 6px 15px;
+	border-radius: 100px;
+
+	&:hover {
+		transition: all 0.6s ease-in-out;
+		box-shadow: none;
+		color: rgb(29, 161, 242);
+		background-color: rgb(224 243 255);
+	}
+}
+
+[id='toggle-heart'] {
+  position: absolute;
+  left: -100vw;
+  
+  &:checked + label {
+    color: #e2264d;
+    will-change: font-size;
+    animation: heart 1s cubic-bezier(.17, .89, .32, 1.49);
+    
+    &:before, &:after {
+      animation: inherit;
+      animation-timing-function: cubic-bezier(.21, .61, .35, 1);
+    }
+  }
+}
+
+[for='toggle-heart'] {
+  align-self: center;
+  position: relative;
+  color: #aab8c2;
+  font-size: 2em;
+  cursor: pointer;
+  
+  &:before, &:after {
+    position: absolute;
+    z-index: -1;
+    top: 50%; left: 50%;
+    border-radius: 50%;
+    content: '';
+  }
+  
+  &:before {
+    box-sizing: border-box;
+    transform: scale(0);
+  }
+}
+
+@keyframes heart {
+  0%, 17.5% { font-size: 0; }
 }

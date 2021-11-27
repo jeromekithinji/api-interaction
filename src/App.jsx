@@ -16,7 +16,7 @@ function App() {
             <KanyeQuote />
             <p>App works</p>
 
-            <Pokemon />
+            <Pokemon heading="Pokemon"/>
 
         </div>
     );

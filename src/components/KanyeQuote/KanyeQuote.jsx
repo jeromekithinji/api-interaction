@@ -13,10 +13,24 @@ const KanyeQuote = () => {
     }
 
     return (
-        <div>
-            <button onClick={getYeQuote} >Get some Ye!</button>
-            {/* Conditionally rendering response */}
-            <p>{yeQuote ? yeQuote.quote : ""}</p>        
+        <div className="tweet">
+            <div className="tweet__container">
+                <p className="tweet__text">{yeQuote ? yeQuote.quote : ""}</p>              
+                {/* Conditionally rendering response */}
+                <span class="user">
+                    <span class="user__img"></span>
+                    <span class="user__username">
+                        <p>ye</p>
+                        <span>kanyewest</span>
+			        </span>
+                    <span class="tweet__like">
+                        <input id="toggle-heart" type="checkbox"/>
+                        <label for="toggle-heart">❤</label>
+                    </span>
+                    </span>
+            </div>
+            <button className="button__new" onClick={getYeQuote} >♻ new tweet</button>
+
         </div>
     )
 }
