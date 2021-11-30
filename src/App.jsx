@@ -14,8 +14,7 @@ function App() {
     return (
         <div className="App">
             <KanyeQuote />
-            <p>App works</p>
-
+            <hr />
             <Pokemon heading="Pokemon"/>
 
         </div>

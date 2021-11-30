@@ -34,10 +34,23 @@ const Pokemon = ({ heading }) => {
     const capitaliseFirstLetter = (str) => str.charAt(0).toUpperCase() + str.slice(1);
     
     // return name, type or image if found from api
-    const getPokemonName = (name) => name ? "Name: " + capitaliseFirstLetter(name) : "";
+    const getPokemonName = (name) => name ? capitaliseFirstLetter(name) : "";
     const getPokemonType = (type) => type ? "Type: " + capitaliseFirstLetter(type) : "";
     const getPokemonSpecies = (species) => species ? "Species: " + capitaliseFirstLetter(species) : "";
     const getPokemonImage = (img) => img ? img : "";
+    const getPokemonId = (id) => id ? id : "";
+    const getPokemonHp = (hp) => hp ? hp : "";
+    const getPokemonDefense = (defense) => defense ? defense : "";
+    const getPokemonSpeed = (speed) => speed ? speed : "";
+
+
+
+
+    const convertHectogramsToPounds = (weight) => {
+        if (!isNaN(weight)) {
+          return (weight * 0.220462).toFixed(2);
+        }
+    }
 
     return (
         <section className="pokemon">
@@ -48,7 +61,35 @@ const Pokemon = ({ heading }) => {
                 <input type="submit" className="pokemon_search-btn" value="Search" />
             </form>
 
-            <div className="pokemon__output">
+            <div className="pokemon-card">
+        <div className="header">
+          <h2>{getPokemonName(pokemon.name)}</h2>
+          {/* <div>{getPokemonHp(pokemon.hp)}HP</div> */}
+        </div>
+        <div className="pokemon-image">
+          <img src={getPokemonImage(pokemon.sprites.front_default)}
+               alt={getPokemonName(pokemon.name)} />
+            <img src={getPokemonImage(pokemon.sprites.back_default)} alt={getPokemonName(pokemon.name)} />
+        </div>
+        <div className="pokemon-info">
+            <p>{getPokemonSpecies(pokemon.abilities[0].ability.name)}</p> 
+
+        </div>
+        <div className="main-content">
+            <div className="national-id">
+                <h3>{pokemon.id}</h3>
+                <p>National ID</p>
+            </div>
+            <div className="pokemon-abilities">
+                <div>{getPokemonType(pokemon.types[0].type.name)}</div>
+                <div>Weight: {convertHectogramsToPounds(pokemon.weight)} lbs.</div>
+                {/* <div>Defense: {getPokemonDefense(pokemon.defense)}</div>
+                <div>Speed: {getPokemonSpeed(pokemon.speed)}</div> */}
+            </div>
+        </div>
+      </div>
+
+            {/* <div className="pokemon__output">
                 <section className="pokemon__output-text">
                     <p>{getPokemonName(pokemon.name)}</p>
                     <p>{getPokemonType(pokemon.types[0].type.name)}</p>
@@ -60,7 +101,7 @@ const Pokemon = ({ heading }) => {
                     <img src={getPokemonImage(pokemon.sprites.back_default)} alt={""} />
                     <img src={getPokemonImage(pokemon.sprites.front_default)} alt={""} />
                 </section>
-            </div>
+            </div> */}
         </section>
     )
 }
